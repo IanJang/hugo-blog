@@ -1,7 +1,7 @@
 ---
 title: "Jekyll3로 블로그 만들기"
 date: 2017-01-20T00:00:00+09:00
-draft: true
+draft: false
 categories:
   - "ETC"
 tags:

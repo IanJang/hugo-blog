@@ -1,7 +1,7 @@
 ---
 title: "EC2 디스크 공간, 메모리 사용량 CloudWatch 지표 쌓기"
 date: 2020-01-01T00:00:00+09:00
-draft: true
+draft: false
 
 categories:
   - "AWS"

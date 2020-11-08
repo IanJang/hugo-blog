@@ -1,7 +1,7 @@
 ---
 title: "Sublime Text3에서 Markdown 문서 작성하기"
 date: 2017-03-04T00:00:00+09:00
-draft: true
+draft: false
 categories:
   - "ETC"
 tags:

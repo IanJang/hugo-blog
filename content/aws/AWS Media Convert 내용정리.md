@@ -1,7 +1,7 @@
 ---
 title: "AWS Media Convert 내용 정리"
 date: 2019-03-11T00:00:00+09:00
-draft: true
+draft: false
 
 categories:
   - "AWS"

@@ -1,7 +1,7 @@
 ---
 title: "AWS Lambda, S3를 이용한 이미지 변환 자동화(feat. ImageMagick)"
 date: 2019-04-05T00:00:00+09:00
-draft: true
+draft: false
 
 categories:
   - "AWS"

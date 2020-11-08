@@ -1,7 +1,7 @@
 ---
 title: "구동중인 AWS EC2 디스크 용량 늘이기"
 date: 2019-04-18T00:00:00+09:00
-draft: true
+draft: false
 
 categories:
   - "AWS"

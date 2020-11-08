@@ -1,7 +1,7 @@
 ---
 title: "Crontab 이용하여 주기적으로 오래된 파일 제거하기"
 date: 2019-04-04T00:00:00+09:00
-draft: true
+draft: false
 
 categories:
   - "Linux"

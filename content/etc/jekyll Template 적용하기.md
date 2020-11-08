@@ -1,7 +1,7 @@
 ---
 title: "Jekyll Template 적용하기"
 date: 2017-04-01T00:00:00+09:00
-draft: true
+draft: false
 categories:
   - "ETC"
 tags:
