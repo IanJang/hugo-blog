@@ -9,11 +9,11 @@ tags:
   - "Python"
   - "BeautifulSoup"
   - "Crawling"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -22,14 +22,14 @@ widgets: # Enable sidebar widgets in given order per page
   - "taglist"
 ---
 
-# BeautifulSoup 설치
+## BeautifulSoup 설치
 Python을 통한 클로링에 대해서 서치해보니, beautifulSoup를 활용한 예제들이 많더라. 우선 설치해보자.
 
-```
+```bash
 $ pip install beautifulSoup4
 ```
 
-# 크롤링 시작하기
+## 크롤링 시작하기
 클리앙의 모두의공원 카테고리의 글을 크롤링해보려 한다.
 레퍼런스 사이트내용을 참고해서 아래와 같이 진행해 보았다.
 우선 해당 페이지의 모든 html text를 긁어와보자
@@ -65,14 +65,14 @@ if __name__ == '__main__':
 
 혹시 아래와 같은 에러를 만난다면
 
-```
+```bash
 bs4.FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
 ```
 
 lxml 라이브러리가 없어 발생한 문제다. 설치하자.
 
-```
-pip install lxml
+```bash
+$ pip install lxml
 ```
 
 계속 진행해보자.
@@ -121,7 +121,7 @@ SUBJECT : 미드 에이젼트 오브 쉴드...
 
 ---
 
-# Reference
+## Reference
 - [파이썬(Python)-취미 프로그래밍, 취미 프로젝트의 시작.](http://hurderella.tistory.com/96)
 - [파이썬(Python) - beautifulSoup 으로 html 파싱](http://hurderella.tistory.com/113)
 - [[PYTHON 3] Tutorials 25. 웹 크롤러(like Google) 만들기 2 - How to build a web crawler](http://creativeworks.tistory.com/entry/PYTHON-3-Tutorials-25-%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%9F%AClike-Google-%EB%A7%8C%EB%93%A4%EA%B8%B0-2-How-to-build-a-web-crawler)

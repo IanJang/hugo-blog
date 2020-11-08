@@ -8,11 +8,11 @@ categories:
 tags:
   - "AWS"
   - "MediaConvert"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -21,10 +21,10 @@ widgets: # Enable sidebar widgets in given order per page
   - "taglist"
 ---
 
-# 들어가며
+## 들어가며
 AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
 
-# Pricing
+## Pricing
 * 기준:
     - Basic Plan
     - AVC 코덱
@@ -65,8 +65,8 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
 
 ------
 
-# Output Groups
-## Apple HLS Group Setting
+## Output Groups
+### Apple HLS Group Setting
 - Segment
     - Segment control
         - Segmented files: 기본
@@ -82,29 +82,23 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
     - [RFC4281(default)](https://www.rfc-editor.org/rfc/rfc4281.txt)
     - [RFC6381](https://www.rfc-editor.org/rfc/rfc6281.txt)
 
-## Output Settings(H.264)
+### Output Settings(H.264)
 - Preset
     - Name modifier 세팅. 생성되는 파일의 post_fix
 - Add I-Frame only manifest
     - 이용시, 플레이어의 비디오 미리 보기에서 콘텐츠 스크러빙을 더 쉽게 지원할 수 있음
     - Reference
-   
         - [[AWS Document] AWS Elemental MediaLive, I-프레임 전용 HLS 매니페스트 및 JPEG 출력 기능 추가](https://aws.amazon.com/ko/about-aws/whats-new/2019/01/aws-elemental-medialive-add-i-frame-only-hls-manifest-and-jpeg-outputs/)
-- Transfort stream settings
-    - ?
 
-## Encoding Settings
+### Encoding Settings
 - AFD(Active Format Description)
     - [[위키피디아]액티브 포맷 디스크립션](https://ko.wikipedia.org/wiki/%EC%95%A1%ED%8B%B0%EB%B8%8C_%ED%8F%AC%EB%A7%B7_%EB%94%94%EC%8A%A4%ED%81%AC%EB%A6%BD%EC%85%98)
 - SEI(Supplemental Enhancement Information)
     - H.264의 임의액세스(영상 비트열 중간부터 재생가능하게 해주는 기능)를 위한 정보 프레임
     - Reference
-   
         - [[AWS Document]출력 타임 코드 설정 조정](https://docs.aws.amazon.com/ko_kr/mediaconvert/latest/ug/timecode-output.html)
-
 - Framerate
     - 기본적으로 소스를 따르게 설정
-
 - Video Mode
     - Rate control mode
         - CBR: 비트레이트가 일정
@@ -122,12 +116,9 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
 |240p|352|240|7|350,000|
 
   - Reference
- 
-
       - [[AWS Document] QVBR 속도 제어 모드 사용](https://docs.aws.amazon.com/ko_kr/mediaconvert/latest/ug/cbr-vbr-qvbr.html)
 
 - HRD Buffer
-
 - GOP(Group of Pictures)
     - I frame의 간격을 말함
     - B frame 2개일 경우: IBBPBBPBBPBBPBBPBBPBBP...I
@@ -138,10 +129,8 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
     > 애니메이션은 Easy한 소스, bitrate를 낮춰도 크게 영상에 문제가 생기거나 하지 않음.
     720p라면 일반적으로 2Mbps쓰지만 1.5Mbps로도 충분하고, QVBR Target 7 쓰면 CDN비용 40%이상 Save 할것으로 예상. GOP size는 60 / B frames between reference frames는 2~3 정도 쓰는것이 좋다.
     - Reference
-   
         - [[위키피디아]IPB Frame - Video compression picture types](https://en.wikipedia.org/wiki/Video_compression_picture_types#Bi-directional_predicted_frames.2Fslices_.28B-frames.2Fslices.29)
 - Scene Change Detection
-
     - I프레임을 중간에 삽입해줌
 - Profile
     - BaseLine(CBP/BP)
@@ -155,7 +144,6 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
         - 고해상도 TV어플리케이션ㅡ Bluray Disc, DVB HDTV 방송 서비스
         - 양방향 예측(B-Frame) 지원
     - Reference
-   :
         - [H.264/MPEG-4 AVC Profiles](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Profiles)
         - [H.264/MPEG-4 AVC Profiles KOR](https://ko.wikipedia.org/wiki/H.264/MPEG-4_AVC)
 - Level
@@ -166,30 +154,27 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
     - CABAC: 상황 적응 이진 산술 코딩. 기본 확률 모델에 대한 고효율 자동 조정을 제공. 산술코더, 가장 높은 압축 효율 비율. CAVLC보다 많은 하드웨어 리소스가 필요
     - CAVLC: 상황 적응 가변 길이 코딩. 호프만과 같은 압축 알고리즘 사용. 적절 품질, 빠른 데이터 압축
     - Reference
-   
         - [http://www.rumpus.co.kr/04.Technology/TransCoderTab04.asp](http://www.rumpus.co.kr/04.Technology/TransCoderTab04.asp)
 - Slice
     - 화면을 독립적으로 분할하여 인코딩 가능
     - 여러 CPU를 동시에 사용할 수 있다.
     - 각 슬라이스 간의 중복되는 부분을 알 수 없음. 인코딩 품질이 떨어질 수 있다
 
-## Audio encoding settings
+### Audio encoding settings
 - profile
     - HE-AAC: 디지털 오디오에서 쓰이는 손실 데이터 압축 방식
         - LC: 복잡성이 낮고, 스트리밍 오디오와 같은 낮은 비트레이트 애플리케이션에 최적화됨
         - HEV1: 스펙트럼 대역 복제(Spectral band replication, SBR)를 사용하여 주파수 영역(frequency domain)에서 압축 효율을 향상시킨다.
         - HEV2: 스펙트럼 대역 복제와 파라메트릭 스테레오(PS)가 한 쌍을 이루어 스테레오 신호의 압축 효율을 향상시킨다. 박수와 같은 압축하기 어렵다고 알려진 음원에서는 음질의 열화가 발생한다고 알려져 있다.
     - Reference
-   
         - [[위키피디아]HE-AAC](https://ko.wikipedia.org/wiki/HE-AAC)
-
 - Bitrate control mode
     - CBR
     - VBR
 
 ------
 
-# Media 서비스 제공 Origin
+## Media 서비스 제공 Origin
 - MediaStore
     - 심플하게 라이브 스트리밍 구성할 경우 사용
 - MediaPackage
@@ -198,7 +183,7 @@ AWS Media Convert를 사용해 보면서 내용을 정리해 보았다.
    - VOD 용
    - Live용으로는 사용 불가능 / MetaData 업데이트가 안되서
 
-# CDN
+## CDN
 - Data Size -> 비용과 연결됨
 - Profile Ordering
     - 대부분 낮은것 부터 올라가도록 세팅함

@@ -9,11 +9,11 @@ tags:
   - "Python"
   - "Flask"
   - "SQLAlchemy"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -21,22 +21,21 @@ widgets: # Enable sidebar widgets in given order per page
   - "recent"
   - "taglist"
 ---
-# 들어가며
+## 들어가며
 pymysql을 이용해서 flask에서 Database를 다뤄봤다. 헌데 뭔가 부족한 감이있다. 자원을 체계적으로 관리하기 힘들어 보였다. 그래서 다른 모듈이 있지 않을까 하여 구글링해보았다.
 그 결과 SQLAlchemy 또는 Flask-SQLAlchemy를 이용한 케이스들이 많더라. 어떤것을 사용하는게 좋을까? 
 
-# SQLAlchemy vs. Flask-SQLAlchemy
+## SQLAlchemy vs. Flask-SQLAlchemy
 우선 지속적으로 관리가 되고 있는지가 궁금했다. Github에서 각각의 repository를 살펴봤다.
 먼저 Flask-SQLAlchemy는 2.1 버전이 stable한 버전이며 2015년 10월 23일에 Release 되었다.
 반면 SQLAlchemy는 22일 전인 2017년 1월 18일에 1.1.5 버전이 release 되었으며, Release history를 보면 꾸준히 버전이 Update 되고 있음을 확인할 수 있었다. 그래서  SQLAlchemy를 쓰기로 결정했다.
-
-## Reference
-- [Flask-SQLAlchemy Github](https://github.com/mitsuhiko/flask-sqlalchemy)
-- [SQLAlchemy Github](https://github.com/zzzeek/sqlalchemy)
+- Reference
+  - [Flask-SQLAlchemy Github](https://github.com/mitsuhiko/flask-sqlalchemy)
+  - [SQLAlchemy Github](https://github.com/zzzeek/sqlalchemy)
 
 ---
 
-# SQLAlchemy 시작하기
+## SQLAlchemy 시작하기
 먼저 SQLAlchemy를 설치하자.
 
 ```
@@ -45,7 +44,7 @@ $ pip install sqlalchemy
 
 최신 버전인 1.1.5 버전이 설치됬다.
 
-```
+```bash
 Collecting sqlalchemy
   Downloading SQLAlchemy-1.1.5.tar.gz (5.1MB)
     100% |████████████████████████████████| 5.1MB 155kB/s
@@ -91,7 +90,7 @@ create_engine()의 두 파라미터를 통해서 DB Connection 정보와 Transat
 
 ---
 
-## Transaction Isolation Level
+### Transaction Isolation Level
 - READ COMMITTED
 - READ UNCOMMITTED
 - REPEATABLE READ
@@ -149,9 +148,9 @@ __init__(self, ...)는 생성자, __repr__(self)는 print를 했을 시 출력�
 ---
 
 
-# Issue and Solution
+## Issue and Solution
 
-## ModuleNotFoundError: No module named 'MySQLdb'
+### ModuleNotFoundError: No module named 'MySQLdb'
 
 앱을 실행시켰더니 아래와같은 에러가 나왔다.
 
@@ -227,7 +226,7 @@ engine = create_engine(
 
 ---
 
-## Sqlalchemy with pymysql 한글깨짐
+### Sqlalchemy with pymysql 한글깨짐
 
 한글이 깨져 나올때는 utf8 인코딩 설정을 해줘야 한다.
 create_engine()을 호출할때 파라미터를 수정해주면 간단히 해결된다.
@@ -243,7 +242,7 @@ engine = create_engine(
 
 ---
 
-# Reference 
+## Reference 
 - [SQLAlchemy Tutorial](http://docs.sqlalchemy.org/en/latest/orm/tutorial.html)
 - [[Python] SQLAlchemy 사용하기](http://yujuwon.tistory.com/entry/SQLAlchemy-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
 - [SQLAlchemy 시작하기 – Part 1](http://www.haruair.com/blog/1682)

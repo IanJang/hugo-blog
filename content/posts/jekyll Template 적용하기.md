@@ -7,11 +7,11 @@ categories:
 tags:
   - "ETC"
   - "Jekyll"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -19,7 +19,7 @@ widgets: # Enable sidebar widgets in given order per page
   - "recent"
   - "taglist"
 ---
-# 마음에드는 Template 찾기
+## 마음에드는 Template 찾기
 
 우선 아래 사이트들 중, 혹은 구글링을 통해 마음에 드는 jekyll Template을 찾는다.
 - [http://jekyllthemes.org/](http://jekyllthemes.org/)
@@ -32,7 +32,7 @@ lanyon-plus Git-hub: [https://github.com/dyndna/lanyon-plus](https://github.com/
 
 --- 
 
-# Template 다운로드
+## Template 다운로드
 아마도 대부분의 jekyll template이 github에 공유되어 있을 것이다.
 template을 다운받거나 git 으로 clone하자. 나는 git clone방식을 택했다.
 
@@ -40,7 +40,7 @@ template을 다운받거나 git 으로 clone하자. 나는 git clone방식을 �
 $ git clone https://github.com/dyndna/lanyon-plus.git
 ```
 
-# Package 설치
+## Package 설치
 template을 다운받은 경로에서 jekyll을 구동해보자. 
 
 ```bash
@@ -70,7 +70,7 @@ bundler를 이용하여 문제를 해결해보자.
 
 ---
 
-# Bundler
+## Bundler
 jekyll template이 설치된 폴더를 살펴보면 Gemfile, Gemfile.lock 찾을 수 있다. 이곳에는 해당 template이 참고한 packege와 그 version의 spec 상세히 정리되어있고, 우리는 그저 한번의 명령어 수행으로 이를 모두 설치하도록 할 수 있다.
 
 혹 bundler가 설치되어있지 않다면 이부터 설치하자.
@@ -87,14 +87,15 @@ $ bundle install
 
 ---
 
-# jekyll 구동하기
+## jekyll 구동하기
 이제 준비 완료다. 아래 명령어로 jekyll을 구동해보자.
+
 ```
 $ jekyll serve
 ```
 
 # Reference
 - [https://github.com/dyndna/lanyon-plus](https://github.com/dyndna/lanyon-plus)
-- [http://guides.rubygems.org/rubygems-basics/]([http://guides.rubygems.org/rubygems-basics/])
+- [http://guides.rubygems.org/rubygems-basics/](http://guides.rubygems.org/rubygems-basics/)
 - [http://ruby-korea.github.io/bundler-site/](http://ruby-korea.github.io/bundler-site/)
 - [http://bundler.io/v1.6/git.html](http://bundler.io/v1.6/git.html)

@@ -9,11 +9,11 @@ tags:
   - "AWS"
   - "S3"
   - "Lambda"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -22,17 +22,17 @@ widgets: # Enable sidebar widgets in given order per page
   - "taglist"
 ---
 
-# 들어가며
+## 들어가며
 
   이미지 리소스의 품질은 최대한 유지한 체로, 용량을 줄이기 위한 방법으로 ImageMagick을 사용하고 있었다. 그러던 중 AWS Lambda, s3를 이용하여 자동화 하면 좋겠다는 생각이 들었고, 실제로 이와같이 적용한 케이스가 많음을 확인하고 바로 작업을 진행해보았다. 아래는 작업을 진행하면서 ImageMagick 부터 Lambda 까지 필요한 내용들을 정리해 보았다.
 
 ---
 
-# ImageMagick?
+## ImageMagick?
 
 이미지 변환용으로 널리 쓰이는 라이브러리이다.
 
-## ImageMagick Option
+### ImageMagick Option
 
 정말 다양한 옵션값이 있다. 간단하게는 Quality 옵션만으로 이미지 압축이 가능하지만, 압축이 어려운 이미지일 경우 원본보다 용량이 커지는 경우도 있더라.
 
@@ -48,11 +48,11 @@ widgets: # Enable sidebar widgets in given order per page
 
 ---
 
-# How to install ImageMagick on Ubuntu
+## How to install ImageMagick on Ubuntu
 
 우분투에 ImageMagick을 설치하려면, 아래와 같이 진행하면 된다
 
-## PNG library 설치
+### PNG library 설치
 
 ```
 $ sudo apt-get install libpng-dev
@@ -61,7 +61,7 @@ $ sudo apt-get install libpng-dev
 
 ---
 
-## 우분투에 ImageMagick 설치
+### 우분투에 ImageMagick 설치
 
 ```
 $ git clone <https://github.com/ImageMagick/ImageMagick.git>
@@ -80,7 +80,7 @@ $ make check
 
 ---
 
-## ImageMagick 명령어
+### ImageMagick 명령어
 
 아래는 image.png를 quality 80 옵션으로 변환한 image_compressed.png를 생성하는 명령어이다.
 
@@ -95,7 +95,7 @@ $ magick convert image.png -quality 80 image_compressed.png
 
 ---
 
-# Wand(ImageMagick for python)
+## Wand(ImageMagick for python)
 
 Python 코드내에서 ImageMagick을 사용하고 싶다면, Wand를 추천한다.
 (PythonMagick / PythonMagickWand 도 있지만 이들은 마지막 Release 버전이 10년도 넘었다.) pip를 이용 쉽게 설치하고 사용해보자
@@ -118,7 +118,7 @@ with Image(filename='origin/image1.png') as img:
 
 ---
 
-# Lambda 함수 작성 Tip
+## Lambda 함수 작성 Tip
 
 ### 환경변수 사용
 
@@ -166,7 +166,7 @@ $ aws lambda update-function-code --function-name ${람다함수명} --zip-file 
 
 ---
 
-## Lambda 함수 s3 event trigger 테스트 방법
+### Lambda 함수 s3 event trigger 테스트 방법
 
 아래와 같이 s3 ObjectCreated Event 샘플을 이용하여 테스트 이벤트를 구성하였다. 아래 코드를 사용시 파일에서 bucket과 object key부분을 수정해서 사용하면 됩니다. 그 외 다른 Service의 Event가 필요하다면 Reference를 참고하여 테스트 이벤트를 구성하면 됩니다.
 
@@ -217,15 +217,15 @@ $ aws lambda update-function-code --function-name ${람다함수명} --zip-file 
 
 ---
 
-## 완성된 코드
+### 완성된 코드
 
 - [https://github.com/IanJang/lambda-wand-image-convert](https://github.com/IanJang/lambda-wand-image-convert)
 
 ---
 
-# Issue & Solution
+## Issue & Solution
 
-## magick: no decode delegate for this image format `PNG'
+### magick: no decode delegate for this image format `PNG'
 
 - 에러메시지
 
@@ -238,7 +238,7 @@ $ aws lambda update-function-code --function-name ${람다함수명} --zip-file 
 
 ---
 
-## Event가 무한히 Trigger 되는 문제
+### Event가 무한히 Trigger 되는 문제
 
 s3에서 파일을 다운 > 로컬에서 변형 > s3에 업로드하는 Lambda함수를 구성하고, 이 함수의 Event Trigger로 s3 ObjectCreated Event를 걸었다. Lambda함수가 s3 Event에 의해 Trigger되어 잘 수행되는지 테스트를 진행는데... 뭔가 이상했다. Lambda함수가 무한히 호출되고 있었다.
 
@@ -258,7 +258,7 @@ s3에서 파일을 다운 > 로컬에서 변형 > s3에 업로드하는 Lambda�
 
 ---
 
-## [ERROR] ClientError: An error occurred (404) when calling the HeadObject operation: Not Found Traceback (most recent call last)
+### [ERROR] ClientError: An error occurred (404) when calling the HeadObject operation: Not Found Traceback (most recent call last)
 
 파일명이 test (1).png인 파일을 s3에 업로드 했더니, Lambda 함수 수행이 실패했다. 로그를 확인하니 위와같은 에러가 발생했고, 더 자세히 들여다 보니 s3 ObjectCreated event에 포함된 object key값이 test+%281%29.png과 같이 깨져있었다. 이 key값을 가지고 s3 파일 다운로드를 object를 찾지 못하고 에러가 발생한 것이다.
 
@@ -277,7 +277,7 @@ decoded_key = unquote_plus(key)
 
 ---
 
-## Task timed out after 3.00 seconds
+### Task timed out after 3.00 seconds
 
 앞서 만든 이미지 변환 Lambda함수를 테스트했더니, 용량이 큰 파일에 대해서는 제대로 동작하지 않는 것을 확인했다. 친절한 에러 메세지덕에 timeout 문제임을 알 수 있었다.
 

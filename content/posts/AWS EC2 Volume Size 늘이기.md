@@ -9,11 +9,11 @@ tags:
   - "AWS"
   - "EC2"
   - "EBS"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -22,12 +22,12 @@ widgets: # Enable sidebar widgets in given order per page
   - "taglist"
 ---
 
-# 들어가며
+## 들어가며
 
 서비스 도중에 EC2 disk 사이즈가 가득 찼다면, 아래와 같이 처리 가능하다. 먼저
 AWS Console 또는 AWS CLI를 이용하여 Volume 사이즈를 늘이고, Volume이 연결된 EC2 shell에 연결하여 Partition 확장을 해야한다. 아래와 같이 진행하면된다.
 
-# EC2 Volume Size 수정
+## EC2 Volume Size 수정
 - AWS Consule에서 아래 경로로 이동
     - Services > EC2 > Volumes 
 - 수정하려는 볼륨을 선택 > Actions - Modify Volume(볼륨수정) 선택 
@@ -37,7 +37,7 @@ AWS Console 또는 AWS CLI를 이용하여 Volume 사이즈를 늘이고, Volume
 
 ---
 
-# Partition 확장
+## Partition 확장
 아래와 같이 lsblk 명령어를 이용하여 스토리지 블럭을 체크한다. 
 disk는 150GB인 반면, root partition에는 100GB만 할당된 것을 확인할 수 있다.
 
@@ -85,7 +85,7 @@ Downtime없이 EC2 Instance의 Disk Volume을 늘이는데 성공했다.
 
 ---
 
-# Reference
+## Reference
 - [https://support.amimoto-ami.com/english/self-hosting-accounts/increasing-your-ec2-volume-size](https://support.amimoto-ami.com/english/self-hosting-accounts/increasing-your-ec2-volume-size)
 - [https://aws.amazon.com/ko/blogs/aws/amazon-ebs-update-new-elastic-volumes-change-everything/](https://aws.amazon.com/ko/blogs/aws/amazon-ebs-update-new-elastic-volumes-change-everything/)
 - [https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/requesting-ebs-volume-modifications.html#elastic-volumes-limitations](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/requesting-ebs-volume-modifications.html#elastic-volumes-limitations)

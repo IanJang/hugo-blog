@@ -8,11 +8,11 @@ categories:
 tags:
   - "EC2"
   - "CloudWatch"
-menu: main # Optional, add page to a menu. Options: main, side, footer
+#menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 pager: true # Enable pager navigation (prev/next) for specific page
-toc: false # Enable Table of Contents for specific page
+toc: true # Enable Table of Contents for specific page
 mathjax: true # Enable MathJax for specific page
 sidebar: "right" # Enable sidebar (on the right side) per page
 widgets: # Enable sidebar widgets in given order per page
@@ -98,6 +98,6 @@ $ sudo crontab -e
 
 ---
 
-# Reference
+## Reference
 
 - [https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/mon-scripts.html](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/mon-scripts.html)
