@@ -2,7 +2,7 @@ baseURL = "https://example.org/"
 title = "IanJang's IT Blog"
 languageCode = "ko-kr"
 paginate = "10"
-theme = "Mainroad"
+theme = "mainroad"
 disqusShortname = "" # Enable Disqus comments by entering your Disqus shortname
 googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
