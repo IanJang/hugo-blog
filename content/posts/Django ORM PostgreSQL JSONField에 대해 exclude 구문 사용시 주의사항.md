@@ -3,6 +3,12 @@ title: "Django ORM PostgreSQL JSONField에 대해 exclude 구문 사용시 주�
 date: 2020-11-13T01:16:00+09:00
 draft: false
 
+categories:
+  - "Django"
+tags:
+  - "Django"
+  - "PostgreSQL"
+  - "DjangoORM"
 #menu: main # Optional, add page to a menu. Options: main, side, footer
 comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
