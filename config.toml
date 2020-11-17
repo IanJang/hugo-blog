@@ -1,4 +1,4 @@
-baseURL = "http://ianjang.github.io/"
+baseURL = "https://ianjang.github.io/"
 defaultContentLanguage = "en"
 languageCode = "en"
 title = "Ian Jang's IT Blog"
@@ -339,10 +339,8 @@ theme = "LoveIt"
       enable = true
       # Disqus comment config
       [params.page.comment.disqus]
-        #
-        enable = false
-        # Disqus shortname to use Disqus in posts
-        shortname = ""
+        enable = true
+        shortname = "https-ianjang-github-io"
       # Gitalk comment config
       [params.page.comment.gitalk]
         #
