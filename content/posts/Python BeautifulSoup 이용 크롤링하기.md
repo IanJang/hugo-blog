@@ -20,6 +20,7 @@ widgets: # Enable sidebar widgets in given order per page
   - "search"
   - "recent"
   - "taglist"
+autonumbering: true
 ---
 
 ## 들어가며
@@ -30,7 +31,7 @@ Python을 이용하여 크롤링을 해보았습니다. BeautifulSoup를 이용�
 ## BeautifulSoup 설치
 
 ```bash
-$ pip install beautifulSoup4
+pip install beautifulSoup4
 ```
 
 ---
@@ -75,7 +76,7 @@ bs4.FeatureNotFound: Couldn't find a tree builder with the features you requeste
 lxml 라이브러리가 없어 발생한 문제입니다. 설치합시다.
 
 ```bash
-$ pip install lxml
+pip install lxml
 ```
 
 계속 진행해봅시다.
@@ -122,7 +123,7 @@ SUBJECT : 미드 에이젼트 오브 쉴드...
 
 ---
 
-## Reference
+## 참고자료
 - [파이썬(Python)-취미 프로그래밍, 취미 프로젝트의 시작.](http://hurderella.tistory.com/96)
 - [파이썬(Python) - beautifulSoup 으로 html 파싱](http://hurderella.tistory.com/113)
 - [[PYTHON 3] Tutorials 25. 웹 크롤러(like Google) 만들기 2 - How to build a web crawler](http://creativeworks.tistory.com/entry/PYTHON-3-Tutorials-25-%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%9F%AClike-Google-%EB%A7%8C%EB%93%A4%EA%B8%B0-2-How-to-build-a-web-crawler)

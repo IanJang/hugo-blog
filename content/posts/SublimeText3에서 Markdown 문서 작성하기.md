@@ -18,18 +18,17 @@ widgets: # Enable sidebar widgets in given order per page
   - "search"
   - "recent"
   - "taglist"
+autonumbering: true
 ---
 
 ## 들어가며
-  
-  블로깅을 하기로 하고서 편리한 Markdown Editor를 찾아 헤맸습니다. 굉장히 다양한 Markdown Tool이 있었습니다. 한국인 개발자가 만든 하루 패드(Haroo pad)도 매우 평이 좋았습니다. 어떤 것을 쓸까 고민하던 중에 평소 자주 사용하는 Sublime Text에 Markdown 용 Plugin이 있지 않을까 하는 생각이 들었습니다. 역시나 다양한 Plugin들이 존재했고, 그중 몇 가지를 소개하려 합니다. 
+블로깅을 하기로 하고서 편리한 Markdown Editor를 찾아 헤맸습니다. 굉장히 다양한 Markdown Tool이 있었습니다. 한국인 개발자가 만든 하루 패드(Haroo pad)도 매우 평이 좋았습니다. 어떤 것을 쓸까 고민하던 중에 평소 자주 사용하는 Sublime Text에 Markdown 용 Plugin이 있지 않을까 하는 생각이 들었습니다. 역시나 다양한 Plugin들이 존재했고, 그중 몇 가지를 소개하려 합니다. 
 - [나무위키:마크다운](https://namu.wiki/w/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4)
 - [What is MarkDown?](https://guides.github.com/features/mastering-markdown)
 
 ---
 
 ## Markdown Editing & Markdown Preview
-
 Markdown Editing은 Markdown 문법으로 문서작성을 할 수 있도록 도와줍니다. 세 가지 문법(Standard Markdown, GitHub flavored Markdown, Multi Markdown) 을 지원하고, Syntax Highlighting과 몇 가지 Color scheme 제공합니다.
 
 Markdown Preview는 작성한 Markdown 문서를 브라우저를 통하여 Preview 할 수 있는 기능을 제공합니다. 
@@ -66,7 +65,7 @@ Markdown Preview는 작성한 Markdown 문서를 브라우저를 통하여 Previ
 }  
 ```
 
-- Reference: Markdown Editing & Markdown Preview 설치 관련 [http://cheng.logdown.com/posts/2015/06/30/sublime-text-3-markdown](http://cheng.logdown.com/posts/2015/06/30/sublime-text-3-markdown)
+- 참고자료: Markdown Editing & Markdown Preview 설치 관련 [http://cheng.logdown.com/posts/2015/06/30/sublime-text-3-markdown](http://cheng.logdown.com/posts/2015/06/30/sublime-text-3-markdown)
 
 ---
 
@@ -98,7 +97,6 @@ Markdown Editing, Markdown Preview만 이용하면 한 가지 단점이 있습�
 ---
 
 ## Markdown Live Preview
-
 Markdown Preview의 대안으로, 결과물을 Sublime Text 자체에서 창을 Split 하여 보여줍니다. 게다가 실시간으로 변경사항이 반영됩니다. 사용해본 결과 굉장히 편리하나 개인적으로는 위에서 언급한 방법을 선호합니다. 각자 취향에 맞게 사용하면 좋을 것 같습니다.
 
 1. Sublime Text3를 실행합니다.

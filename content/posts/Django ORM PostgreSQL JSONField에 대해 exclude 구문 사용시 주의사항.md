@@ -21,13 +21,13 @@ widgets: # Enable sidebar widgets in given order per page
   - "search"
   - "recent"
   - "taglist"
+autonumbering: true
 ---
 
 ## 들어가며 
-
-  PostgreSQL JSON Field에 대하여 ORM 구문 작성 시 exclude를 사용한다면 주의하길 바랍니다. JSON Field에 대한 질의 결과가 일반적인(?) 예상과는 조금 다른 결과가 나옵니다. 그 때문에 이 같은 내용을 모르고 사용한다면 혼란에 빠질 수 있습니다.  실제로 본인 포함한 여러 개발자가 동일한 케이스로 혼란을 겪은 경험이 있습니다. 본 글의 내용을 접한 분들은 동일한 혼란을 겪지 않을 수 있길 바랍니다.  
+PostgreSQL JSON Field에 대하여 ORM 구문 작성 시 exclude를 사용한다면 주의하길 바랍니다. JSON Field에 대한 질의 결과가 일반적인(?) 예상과는 조금 다른 결과가 나옵니다. 그 때문에 이 같은 내용을 모르고 사용한다면 혼란에 빠질 수 있습니다.  실제로 본인 포함한 여러 개발자가 동일한 케이스로 혼란을 겪은 경험이 있습니다. 본 글의 내용을 접한 분들은 동일한 혼란을 겪지 않을 수 있길 바랍니다.
   
-(본 글은 Django 3.0.7, psycopg2-binary 2.8.5, PostgreSQL 12.4 기준으로 테스트 후 작성되었습니다.)  
+(* 본 글은 Django 3.0.7, psycopg2-binary 2.8.5, PostgreSQL 12.4 기준으로 테스트 후 작성되었습니다.)
 
 ---
 
@@ -57,8 +57,7 @@ class TestJsonFieldFiltering(TestCase):
         Book.objects.create(id=8, data={'title': 'python', 'is_published': False})
 ```
 
-### filter 테스트
-
+### Filter 테스트
 먼저 filter를 테스트해 봅시다. 
 
 ```python
@@ -74,8 +73,7 @@ def test_filter(self):
 
 data__is_published=True로 필터 시 5, 6번 data가 조회되었고, data__is_published=False로 필터 시 7, 8번 데이터가 조회되었습니다. 의도한 대로 결과가 잘 조회됩니다.
 
-### exclude 테스트
-
+### Exclude 테스트
 다음으로 exclude에 대해 테스트를 해 봅시다.
 
 ```python
@@ -92,10 +90,9 @@ Assertion Error가 발생했습니다. 의도 대로라면 is_published가 True�
 ---
 
 ## JSON Field 필터링 시 SQL 질의문(Query) 확인
-
 앞서 테스트한 ORM 구문에 대해서 실제로 어떤 Query가 Database에 요청되는지 확인해 봅시다. 먼저 filter query부터 확인해 봅시다.
 
-### filter query
+### Filter query
 
 ```python
 queryset = Book.objects.filter(data__is_published=True)
@@ -107,10 +104,9 @@ SELECT (..생략..)
 FROM   "myapp_book" 
 WHERE  "myapp_book"."data" -> is_published = 'true'
 ```
-
 특이 사항은 없어 보입니다. 다음은 exclude query를 확인해 봅시다.
 
-### exclude query
+### Exclude query
 
 ```python
 queryset = DummyModel.objects.exclude(data__is_published=True)
@@ -123,7 +119,6 @@ FROM   "myapp_book"
 WHERE  NOT "myapp_book"."data" -> is_published = 'true' 
 AND    "myapp_book"."data" IS NOT NULL 
 ```
-
 filter query와 달리 의도하지 않은 구문이 포함된 것이 보입니다.  "myapp_book"."data" IS NOT NULL 이것 때문인지 결과가 달라진 것은 아닐지 확인해 봤습니다. (결론부터 말하자면 해당 조건과는 무관했습니다) 일단 조건절 모양이 "NOT (A AND B)" 형태여서 눈에 잘 안 들어오니, 드모르간 법칙을 이용해 조건절을 보기 쉽게 "NOT A OR NOT B" 형태로 바꿔봤습니다.
 
 ```sql
@@ -133,7 +128,7 @@ WHERE  "myapp_book"."data" -> is_published != 'true'
 OR     "myapp_book"."data" IS NULL
 ```
 
-풀어놓고 다시 보니 Query 구문 자체는 문제가 없어 보입니다. "myapp_book"."data" -> is_published != 'true'  조건만으로도 1, 2, 3, 4, 7, 8이 선택돼야 할 것처럼 보입니다.  아래 다이어그램처럼 말이죠….
+풀어놓고 다시 보니 Query 구문 자체는 문제가 없어 보입니다. "myapp_book"."data" -> is_published != 'true'  조건만으로도 1, 2, 3, 4, 7, 8이 선택돼야 할 것처럼 보입니다.  아래 다이어그램처럼 말이죠.
 
 ![다이어그램](https://ianjang.github.io/img/jsonfield-filter-result-diagram.png)
 
@@ -142,7 +137,6 @@ Query 구문 확인으로도 여전히 의문은 풀리지 않았습니다. 그�
 ---
 
 ### DB Query 수행 결과 확인
-
 위에서 마지막으로 도출했던 Query 구문의 조건절을 분리하여 각각 Query를 수행해 보았습니다.
 
 ```sql
@@ -161,7 +155,6 @@ postgres_db=# SELECT "id", "data" FROM "myapp_book" where "myapp_book"."data" ->
   8 | {"title": "python", "is_published": false}
 (2 rows)
 ```
-
 원인을 찾았습니다. QUERY #2의 결과가 예상했던 1, 2, 3, 4, 7, 8이 아닌 달리 7, 8만 조회되네요. JSONField의 특정 key값에 대해서 조회 조건을 사용하면 해당 key값이 없는 row는 제외하고 결과가 조회됨을 알 수 있습니다.
 
 몇 가지 더 테스트 해봤습니다.

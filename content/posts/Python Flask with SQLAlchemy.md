@@ -20,6 +20,7 @@ widgets: # Enable sidebar widgets in given order per page
   - "search"
   - "recent"
   - "taglist"
+autonumbering: true
 ---
 ## 들어가며
 pymysql을 이용해서 flask에서 Database를 다뤄보았습니다. 뭔가 부족한 감이 있었습니다. 자원을 체계적으로 관리하기 힘들어 보였습니다. 그래서 대안을 찾아보았고 SQLAlchemy과 Flask-SQLAlchemy에 대한 사례들이 있었습니다. 본문에 관련 내용을 정리해 보았습니다. 
@@ -40,7 +41,7 @@ pymysql을 이용해서 flask에서 Database를 다뤄보았습니다. 뭔가 �
 먼저 SQLAlchemy를 설치합시다
 
 ```bash
-$ pip install sqlalchemy
+pip install sqlalchemy
 ```
 
 최신 버전인 1.1.5 버전이 설치되었습니다.
@@ -181,7 +182,7 @@ engine = create_engine(
 MySQLdb 모듈이 없다고 합니다. pip를 이용하여 설치합시다.
 
 ```bash
-$ pip install MySQLdb
+pip install MySQLdb
 ```
 
 그 결과 
@@ -212,7 +213,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@local
 pymysql을 이용하면 된다고합니다. pymysql을 설치하고 이를 이용하도록 코드를 수정했습니다.
 
 ```bash
-$ pip install pymysql
+pip install pymysql
 ```
 
 ```python
@@ -227,11 +228,8 @@ engine = create_engine(
 ---
 
 ### Sqlalchemy with pymysql 한글깨짐
-
 한글이 깨져 나올때는 utf8 인코딩 설정을 해줘야 합니다.
-
 create_engine()을 호출할때 파라미터를 수정해주면 간단히 해결됩니다.
-
 아래처럼 dbhost 파라미터에 *charset=utf8*을 추가합시다.
 
 ```python
@@ -243,7 +241,7 @@ engine = create_engine(
 
 ---
 
-## Reference 
+## 참고자료 
 - [SQLAlchemy Tutorial](http://docs.sqlalchemy.org/en/latest/orm/tutorial.html)
 - [[Python] SQLAlchemy 사용하기](http://yujuwon.tistory.com/entry/SQLAlchemy-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
 - [SQLAlchemy 시작하기 – Part 1](http://www.haruair.com/blog/1682)

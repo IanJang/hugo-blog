@@ -2,6 +2,7 @@
 /themes/
 /.idea/
 /public/
+/resources/_gen/assets/
 
 # Except this file
 !.gitignore

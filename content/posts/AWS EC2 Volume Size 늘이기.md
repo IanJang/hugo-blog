@@ -20,6 +20,7 @@ widgets: # Enable sidebar widgets in given order per page
   - "search"
   - "recent"
   - "taglist"
+autonumbering: true
 ---
 
 ## 들어가며
@@ -86,7 +87,7 @@ tmpfs           1.6G     0  1.6G   0% /run/user/1000
   
 ---
 
-## Reference
+## 참고자료
 - [https://support.amimoto-ami.com/english/self-hosting-accounts/increasing-your-ec2-volume-size](https://support.amimoto-ami.com/english/self-hosting-accounts/increasing-your-ec2-volume-size)
 - [https://aws.amazon.com/ko/blogs/aws/amazon-ebs-update-new-elastic-volumes-change-everything/](https://aws.amazon.com/ko/blogs/aws/amazon-ebs-update-new-elastic-volumes-change-everything/)
 - [https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/requesting-ebs-volume-modifications.html#elastic-volumes-limitations](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/requesting-ebs-volume-modifications.html#elastic-volumes-limitations)

@@ -18,11 +18,13 @@ widgets: # Enable sidebar widgets in given order per page
   - "search"
   - "recent"
   - "taglist"
+autonumbering: true
 ---
 
 ## 들어가며
+Jekyll을 이용하여 블로그를 구성해봅시다.
 
-  Jekyll을 이용하여 블로그를 구성해봅시다.
+---
 
 ## 사전준비
 ### Ruby 설치
@@ -39,28 +41,26 @@ widgets: # Enable sidebar widgets in given order per page
 ### Jekyll 설치하기 
 
 ```bash
-$ gem install jekyll
+gem install jekyll
 ```
 
 ---
 
 ## Jekyll 템플릿 적용하기
-  검색해보면 다양한 jekyll 무료 템플릿이 존재합니다. 저는 ([lanyon_plus](https://github.com/dyndna/lanyon-plus))을 찾아 적용했습니다. 템플릿 적용에 대해서는 아래 포스트를 참고 바랍니다. 
+검색해보면 다양한 jekyll 무료 템플릿이 존재합니다. 저는 ([lanyon_plus](https://github.com/dyndna/lanyon-plus))을 찾아 적용했습니다. 템플릿 적용에 대해서는 아래 포스트를 참고 바랍니다. 
 - [Jekyll-template-적용하기](https://ianjang.github.io/jekyll-template-적용하기/)
 
 ---
 
 ## 서버 구동
-
-  Template 설치가 끝나면 해당 폴더 아래로 이동하여 아래 명령어를 수행합시다. 
+Template 설치가 끝나면 해당 폴더 아래로 이동하여 아래 명령어를 수행합시다. 
 
 ```bash
-$ jekyll serve 
+jekyll serve 
 ```
-
-  이제 브라우저에서 http://127.0.0.1:4000/ (혹은 5000 포트) 에 접속하여 블로그가 잘 보이는지 확인해 봅시다.
+이제 브라우저에서 http://127.0.0.1:4000/ (혹은 5000 포트) 에 접속하여 블로그가 잘 보이는지 확인해 봅시다.
 
 ---
 
-## Reference
+## 참고자료
   - [https://jekyllrb-ko.github.io/](https://jekyllrb-ko.github.io/)
